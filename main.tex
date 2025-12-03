@@ -1,0 +1,166 @@
+% ==========
+% a4paper: 纸张大小为A4
+% titlepage: 独立标题页
+% openany: 章节可在任意页开始
+% draft: 草稿模式，显示溢出警告
+% ==========
+% \documentclass[10pt,a4paper,titlepage,fontset=mac,draft]{ctexart}
+\documentclass[10pt,a4paper,titlepage,fontset=mac]{ctexart}
+
+% ==========
+% 要引用的包
+% ==========
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ==========
+% 交叉引用
+% ==========
+% 图表引用改成（图 1）这样的格式
+\usepackage{cleveref}
+\crefformat{figure}{\bfseries#2（图~#1~）#3}
+\crefmultiformat{figure}{\bfseries（#2图#1#3}{, #2图#1#3）}{, #2图#1#3}{ and #2图#1#3）}
+\crefrangeformat{figure}{\bfseries（#3图#1#4 至 #5图#2#6）}
+
+\crefformat{table}{\bfseries#2（表~#1~）#3}
+
+
+% caption的分隔符改成点
+\usepackage{caption}
+\captionsetup{labelsep=period}
+
+% ==========
+% 页面设置
+% ==========
+\usepackage{geometry}
+\geometry{
+    a4paper,                % 纸张大小为A4
+    hmargin = 1.25in,       % 左右页边距为1.25英寸
+    vmargin = 1in,          % 上下页边距为1英寸
+    includeheadfoot,        % 将页眉页脚纳入版心计算
+    top=15mm,               % 页眉顶端到页面顶部距离 = 1.5cm
+    bottom=17.5mm,          % 页脚底端到页面底部距离 = 1.75cm
+    headheight=5mm,         % 页眉区域高度（根据内容调整）
+    headsep=9mm,            % 页眉底部到正文顶部的距离
+    footskip=7mm,           % 正文底部到页脚基线的距离
+}
+
+% ==========
+% 页眉页脚设置
+% ==========
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhf{}				% 使用 \fancyhf{} 来清空页眉页脚的设置
+\makeatletter
+\fancyhead[C]{\zihao{-5}\@title}  % 页眉居中显示一标题名
+\makeatother
+\fancyfoot[C]{\zihao{-5}\thepage}
+
+% ==========
+% 目录格式设置
+% ==========
+\usepackage{titletoc}
+\renewcommand{\contentsname}{\zihao{2}目录}
+\titlecontents{section}
+    [2em]                       % 左边距
+    {\zihao{5} \bfseries}       % 章节标题字体
+    {\contentslabel{2em}}       % 标号格式[字体]{宽度}
+    {}                          % 标号后内容前的代码
+    {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
+    
+\titlecontents{subsection}
+    [6em]                       % 左边距
+    {\zihao{5}}                 % 章节标题字体
+    {\contentslabel{4em}}       % 标号格式[字体]{宽度}
+    {}                          % 标号后内容前的代码
+    {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
+    
+\titlecontents{subsubsection}
+    [8em]                       % 左边距
+    {\zihao{5}}                 % 章节标题字体
+    {\contentslabel{4em}}       % 标号格式[字体]{宽度}
+    {}                          % 标号后内容前的代码
+    {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
+
+\titlecontents{paragraph}
+    [10em]                      % 左边距
+    {\zihao{5}}                 % 章节标题字体
+    {\contentslabel{4em}}       % 标号格式[字体]{宽度}
+    {}                          % 标号后内容前的代码
+    {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
+
+% ==========
+% 杂项设置
+% ==========
+\bibliographystyle{unsrt}
+\graphicspath{{figure/}}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+% ==========
+% 标题格式设置
+% ==========
+\usepackage{titlesec}
+\titleformat*{\section}{\zihao{3} \bfseries \ziju{0.05}}
+\titlespacing*{\section}{0pt}{1ex}{1ex}
+\titleformat*{\subsection}{\zihao{4} \bfseries \ziju{0.05}}
+\titlespacing*{\subsection}{0pt}{1ex}{1ex}
+\titleformat*{\subsubsection}{\zihao{-4} \bfseries \ziju{0.05}}
+\titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
+\titleformat*{\paragraph}{\zihao{5} \bfseries \ziju{0.05}}
+\titlespacing*{\paragraph}{0pt}{1ex}{1ex}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\par}
+
+% ==========
+% 全局字体设置
+% ==========
+% 定义中文字体
+% \setCJKmainfont{STSong}[AutoFakeBold = 4]     % 设置中文正文字体为宋体
+% \setCJKsansfont{STHeiti}                    % 设置中文无衬线字体为黑体
+% \setCJKmonofont{STFangsong}                 % 设置中文等宽字体为仿宋
+
+% 定义英文字体
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+
+% ==========
+% 基本设置：
+% ==========
+\title{}
+\newcommand{\fullname}{}
+\newcommand{\teacher}{}
+\newcommand{\subject}{}
+\newcommand{\collage}{}
+\newcommand{\graduateTime}{}
+
+% ==========
+% 正文
+% ==========
+\begin{document}
+\fontsize{10.5pt}{13pt}\selectfont
+
+\input{chapter/title.tex}
+
+\tableofcontents	%目录
+\newpage
+
+\pagenumbering{arabic}
+
+% 正文1.5倍行距
+\setlength{\baselineskip}{23.4pt}
+\input{chapter/section.tex}
+
+\newpage
+\bibliography{ref}
+\end{document}
