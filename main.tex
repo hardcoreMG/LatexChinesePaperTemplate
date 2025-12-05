@@ -91,12 +91,6 @@
     {}                          % 标号后内容前的代码
     {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
 
-\titlecontents{paragraph}
-    [10em]                      % 左边距
-    {\zihao{5}}                 % 章节标题字体
-    {\contentslabel{4em}}       % 标号格式[字体]{宽度}
-    {}                          % 标号后内容前的代码
-    {\titlerule*[3pt]{.}\contentspage} % 章节标题和页码之间的点线及页码格式
 
 % ==========
 % 杂项设置
@@ -117,10 +111,7 @@
 \titlespacing*{\subsection}{0pt}{1ex}{1ex}
 \titleformat*{\subsubsection}{\zihao{-4} \bfseries \ziju{0.05}}
 \titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
-\titleformat*{\paragraph}{\zihao{5} \bfseries \ziju{0.05}}
-\titlespacing*{\paragraph}{0pt}{1ex}{1ex}
 
-\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\par}
 
 % ==========
 % 全局字体设置
@@ -148,7 +139,6 @@
 % 正文
 % ==========
 \begin{document}
-\fontsize{10.5pt}{13pt}\selectfont
 
 \include{chapter/title.tex}
 
